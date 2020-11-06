@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Task
+{% endblock %}
+
+{% block content %}
+    <a href="{{ url('task_create') }}" class="btn btn-info text-center btn-block"><h2>Create New Task</h2></a>
+    {% for task in tasks %}
+        <div class="task">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text">{{ task.description|truncate(30, True, end='...') }}</p>
+                    <a href="{{ url('task_detail', task_id=task.id) }}" class="btn btn-primary btn-lg">Get Detail</a>
+                    <a href="{{ url('task_update', task_id=task.id) }}" class="btn btn-warning btn-lg">Edit</a>
+                    <a href="{{ url('task_delete', task_id=task.id) }}" class="btn btn-danger btn-lg">Delete</a>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

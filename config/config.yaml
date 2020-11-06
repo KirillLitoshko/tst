@@ -1,0 +1,9 @@
+postgres:
+  username: test_user
+  password: test
+  host: localhost
+  port: 5432
+  database: test_tasks_db
+
+host: localhost
+port: 8000

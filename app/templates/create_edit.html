@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% if task %}{{ url('task_update', task_id=task.id) }} {% else %}{{ url('task_create') }}{% endif %}"
+          method="post">
+        <div class="form-group">
+            <label for="title">Task Title</label>
+            <input type="text" class="form-control" id="title" name="title"
+                   placeholder="Task Title Example" {% if task %}value="{{ task.title }}"{% endif %}>
+        </div>
+        <div class="form-group">
+            <label for="description">Example textarea</label>
+            <textarea class="form-control" id="description" name="description" rows="8">{% if task %}
+                {{ task.description|trim }}{% endif %}
+            </textarea>
+        </div>
+        <input type="submit" value="Create/Update" class="btn btn-info text-center btn-block">
+    </form>
+{% endblock %}
