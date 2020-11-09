@@ -8,7 +8,8 @@ async def init_pg(app):
 
 
 async def close_pg(app):
-    pass
+    app['psql'].close()
+    await app['psql'].wait_closed()
 
 
 def construct_db_url(config):
